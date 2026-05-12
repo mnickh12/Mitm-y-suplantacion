@@ -1,0 +1,27 @@
+services:
+  dns_resolver:
+    image: ubuntu:22.04
+    container_name: dns_resolver
+    command: sleep infinity
+    networks:
+      red_dns:
+        ipv4_address: 192.168.20.10
+    cap_add:
+      - NET_ADMIN
+
+  dns_servidor:
+    image: ubuntu:22.04
+    container_name: dns_servidor
+    command: sleep infinity
+    networks:
+      red_dns:
+        ipv4_address: 192.168.20.1
+    cap_add:
+      - NET_ADMIN
+
+networks:
+  red_dns:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.20.0/24
