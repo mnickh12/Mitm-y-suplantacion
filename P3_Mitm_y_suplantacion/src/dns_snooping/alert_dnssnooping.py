@@ -14,7 +14,6 @@ def alert_dnssnooping(pkt):
         qname = pkt[DNSQR].qname.decode()
         src_ip = pkt["IP"].src if "IP" in pkt else "localhost"
 
-        # Detectamos todas las consultas DNS (no solo respuestas)
         now = datetime.now()
         nxdomain_queries[src_ip].append(now)
 
