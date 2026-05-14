@@ -3,9 +3,6 @@ services:
     image: ubuntu:22.04
     container_name: victima
     command: sleep infinity
-    networks:
-      red_local:
-        ipv4_address: 192.168.10.10
     cap_add:
       - NET_ADMIN
 
@@ -13,39 +10,16 @@ services:
     image: ubuntu:22.04
     container_name: router
     command: sleep infinity
-    networks:
-      red_local:
-        ipv4_address: 192.168.10.1
-      red_externa:
-        ipv4_address: 10.0.1.1
     cap_add:
       - NET_ADMIN
 
   servidor_web:
     image: nginx:alpine
     container_name: servidor_web
-    networks:
-      red_externa:
-        ipv4_address: 10.0.1.100
 
   atacante:
     image: ubuntu:22.04
     container_name: atacante
     command: sleep infinity
-    networks:
-      red_local:
-        ipv4_address: 192.168.10.50
     cap_add:
       - NET_ADMIN
-
-networks:
-  red_local:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 192.168.10.0/24
-  red_externa:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 10.0.1.0/24

@@ -1,29 +1,21 @@
 #!/usr/bin/env python3
-"""
-Monitor de red para detección de ARP Spoofing.
-Detecta anomalías cuando una misma IP responde con diferentes MACs.
-"""
-
 from scapy.all import sniff, ARP
 from collections import defaultdict
 
-# Tabla IP -> MAC conocida
 arp_table = defaultdict(set)
 
-
 def alert_arpspoof(pkt):
-    """Detecta respuestas ARP sospechosas."""
-    if ARP in pkt and pkt[ARP].op == 2:  # is-at (reply)
+    # Mostrar todo paquete ARP que llegue
+    if ARP in pkt:
+        op = pkt[ARP].op
         ip_src = pkt[ARP].psrc
         mac_src = pkt[ARP].hwsrc
-        real_mac = pkt[ARP].hwsrc
+        print(f"[DEBUG] ARP recibido: op={op} IP={ip_src} MAC={mac_src}")
 
-        arp_table[ip_src].add(mac_src)
-
-        if len(arp_table[ip_src]) > 1:
-            print(f"[!] ALERTA ARP SPOOFING: IP {ip_src} detectada con"
-                  f" múltiples MACs: {', '.join(arp_table[ip_src])}")
-
+        if op == 2:  # is-at (reply)
+            arp_table[ip_src].add(mac_src)
+            if len(arp_table[ip_src]) > 1:
+                print(f"[!] ALERTA ARP SPOOFING: IP {ip_src} con múltiples MACs: {', '.join(arp_table[ip_src])}")
 
 if __name__ == "__main__":
     print("[*] Iniciando monitor ARP...")
