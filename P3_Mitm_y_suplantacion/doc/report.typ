@@ -10,7 +10,7 @@
   #text(size: 16pt)[Práctica 3: MitM y Suplantación]
 
   #v(1.5cm)
-  #text(size: 12pt)[Autor: Alfredo Robledano Abasolo]
+  #text(size: 12pt)[Autor: Marcos]
   #text(size: 12pt)[Fecha: 14 de mayo de 2026]
   #text(size: 12pt)[Asignatura: Técnicas de Hacking]
 ]
