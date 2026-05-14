@@ -15,7 +15,6 @@
   #text(size: 12pt)[Asignatura: Técnicas de Hacking]
 ]
 
-#pagebreak
 
 #outline(title: "Índice", depth: 2)
 
@@ -29,7 +28,6 @@ Se han diseñado dos escenarios de red virtualizados mediante Docker Compose. El
 
 Para cada escenario se ha desarrollado un detector basado en Scapy que analiza el tráfico en tiempo real y emite alertas al identificar patrones maliciosos. Los resultados obtenidos demuestran la efectividad de las firmas implementadas para detectar ambos tipos de ataques en entornos controlados.
 
-#pagebreak
 
 = Introducción
 
