@@ -1,5 +1,5 @@
 #set page(paper: "a4", margin: 2.5cm)
-#set text(font: "Times New Roman", size: 12pt)
+#set text(size: 12pt)
 #set par(justify: true, leading: 0.5em)
 #set heading(numbering: "1.")
 
