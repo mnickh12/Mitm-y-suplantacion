@@ -2,7 +2,7 @@
 from scapy.all import IP, UDP, DNS, DNSQR, send
 import random, string, time
 
-TARGET_DNS = "192.168.20.1"
+TARGET_DNS = "172.18.0.3"
 DOMAIN = "victima.local"
 NUM_QUERIES = 15
 
